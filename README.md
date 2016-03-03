@@ -1,4 +1,4 @@
-# Automation Bioler Plate
+# Automation Boiler Plate
 Basic framework for automation creation.
 
 *******
