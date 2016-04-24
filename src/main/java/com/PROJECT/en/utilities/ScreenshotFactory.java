@@ -14,18 +14,19 @@ import java.util.Calendar;
  */
 
 public class ScreenshotFactory {
-  public static void captureScreenshot(WebDriver driver, String screenshotName)
+  public static void captureScreenshot(WebDriver driver, String folderName, String screenshotName)
   {
 
     try
     {
-      String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+      String folderTimeStamp = new SimpleDateFormat("yyyyMMdd").format(Calendar.getInstance().getTime());
+      String imageTimeStamp = new SimpleDateFormat("yyyyMMdd_HHmm").format(Calendar.getInstance().getTime());
       TakesScreenshot ts=(TakesScreenshot)driver;
       File source=ts.getScreenshotAs(OutputType.FILE);
 
-      FileUtils.copyFile(source, new File("./Screenshots/" + screenshotName + timeStamp + ".png"));
+      FileUtils.copyFile(source, new File("./Screenshots/" + folderName + folderTimeStamp + "/" + screenshotName + imageTimeStamp + ".png"));
 
-      System.out.println("Screenshot placed in root /screenshots folder!");
+      System.out.println(screenshotName + imageTimeStamp + " placed in root /screenshots/" + folderName + folderTimeStamp + " folder!");
     }
     catch (Exception e)
     {
@@ -33,5 +34,4 @@ public class ScreenshotFactory {
       System.out.println("Exception while taking screenshot " + e.getMessage());
     }
   }
-
 }
