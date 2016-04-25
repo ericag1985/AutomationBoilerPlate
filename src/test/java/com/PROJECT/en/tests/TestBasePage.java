@@ -36,7 +36,7 @@ public class TestBasePage {
   public void takeScreenShotOnFailure(ITestResult testResult, Method m) throws IOException {
     String methodName = m.getName();
     if (testResult.getStatus() == ITestResult.FAILURE) {
-      ScreenshotFactory.captureScreenshot(driver, "FailedTest_" + methodName);
+      ScreenshotFactory.captureScreenshot(driver, "Failed_Tests_", methodName + "_failed");
     }
   }
 
